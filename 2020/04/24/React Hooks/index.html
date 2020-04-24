@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>JimBoBo</title>
+  <title>React Hooks | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimBoBo">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;index.html">
+  <meta name="description" content="React Hooks一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有** Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性 如果你在编写函数组件并意识到需要向其添加一些 s">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Hooks">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2020&#x2F;04&#x2F;24&#x2F;React%20Hooks&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="前端">
+<meta property="og:description" content="React Hooks一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有** Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性 如果你在编写函数组件并意识到需要向其添加一些 s">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;jpeg&#x2F;276018&#x2F;1558951298453-2cc121f1-34ce-42db-a20b-b897939aada9.jpeg#align=left&amp;display=inline&amp;height=289&amp;originHeight=289&amp;originWidth=624&amp;size=0&amp;status=done&amp;width=624">
+<meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;png&#x2F;276018&#x2F;1572577447145-aec670f1-e351-4bfd-b5c6-9f725581ea7f.png#align=left&amp;display=inline&amp;height=365&amp;name=image.png&amp;originHeight=729&amp;originWidth=1088&amp;size=157329&amp;status=done&amp;width=544">
+<meta property="og:updated_time" content="2020-04-24T02:51:14.995Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;jpeg&#x2F;276018&#x2F;1558951298453-2cc121f1-34ce-42db-a20b-b897939aada9.jpeg#align=left&amp;display=inline&amp;height=289&amp;originHeight=289&amp;originWidth=624&amp;size=0&amp;status=done&amp;width=624">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
   
@@ -154,16 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-React Hooks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-React Hooks" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/React%20Hooks/">React Hooks</a>
+    <h1 class="article-title" itemprop="name">
+      React Hooks
     </h1>
   
 
@@ -452,13 +455,54 @@
       
      
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
       <!-- 添加本文结束标记-->
   
+    <div style="text-align:center;color: #00BFFF;font-size:14px;">
+         -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+         </div>
+    
     <!-- 添加完成 -->
      <!-- 开始添加版权声明-->
      
    
-     <div class="declare" hidden="hidden"></div>
+     <div class="declare">
+       <ul><li><strong>本文作者：</strong>
+       
+         JimBoBo
+       
+     </li></ul>
+       <ul><li><strong>本文链接：</strong>
+     <a href="http://blog.jimbobo.me/2020/04/24/React%20Hooks/" target="_blank" rel="noopener">http://blog.jimbobo.me/2020/04/24/React%20Hooks/</a>
+     </li></ul>
+       <ul><li><strong>版权声明：</strong>
+       本作品采用
+       <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       进行许可。转载请注明出处！
+       
+     </li></ul>
+       
+     </div>
    
    <!-- 添加完成 -->
     </div>
@@ -480,16 +524,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/React%20Hooks/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2020/04/24/React%20Hooks/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">diyige3333</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -509,208 +612,14 @@
 
 
 
-
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/03/hello-world/">diyige3333</a>
-    </h1>
   
 
-        
-        <a href="/2016/12/03/hello-world/" class="archive-article-date">
-  	<time datetime="2016-12-02T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa<br>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-<p>fsdafdsafdsafdsa</p>
-
-      
-     
-      
-      <!-- 添加本文结束标记-->
   
-    <!-- 添加完成 -->
-     <!-- 开始添加版权声明-->
-     
-   
-     <div class="declare" hidden="hidden"></div>
-   
-   <!-- 添加完成 -->
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/03/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
 
   
+
   
 
 
@@ -733,8 +642,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
