@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
   <title>React Hooks | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="React Hooks一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有** Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性 如果你在编写函数组件并意识到需要向其添加一些 s">
+  <meta name="description" content="一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有**  Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性  如果你在编写函数组件并意识到需要向其添加一些 state，以前的做">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Hooks">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2020&#x2F;04&#x2F;24&#x2F;React%20Hooks&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="React Hooks一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有** Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性 如果你在编写函数组件并意识到需要向其添加一些 s">
+<meta property="og:description" content="一、什么是 Hooks React 一直都提倡使用**函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有**  Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性  如果你在编写函数组件并意识到需要向其添加一些 state，以前的做">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;jpeg&#x2F;276018&#x2F;1558951298453-2cc121f1-34ce-42db-a20b-b897939aada9.jpeg#align=left&amp;display=inline&amp;height=289&amp;originHeight=289&amp;originWidth=624&amp;size=0&amp;status=done&amp;width=624">
 <meta property="og:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;png&#x2F;276018&#x2F;1572577447145-aec670f1-e351-4bfd-b5c6-9f725581ea7f.png#align=left&amp;display=inline&amp;height=365&amp;name=image.png&amp;originHeight=729&amp;originWidth=1088&amp;size=157329&amp;status=done&amp;width=544">
-<meta property="og:updated_time" content="2020-04-24T02:51:14.995Z">
+<meta property="og:updated_time" content="2020-04-24T03:26:40.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.nlark.com&#x2F;yuque&#x2F;0&#x2F;2019&#x2F;jpeg&#x2F;276018&#x2F;1558951298453-2cc121f1-34ce-42db-a20b-b897939aada9.jpeg#align=left&amp;display=inline&amp;height=289&amp;originHeight=289&amp;originWidth=624&amp;size=0&amp;status=done&amp;width=624">
   
@@ -179,20 +179,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h1><h2 id="一、什么是-Hooks"><a href="#一、什么是-Hooks" class="headerlink" title="一、什么是 Hooks"></a>一、什么是 Hooks</h2><ul>
-<li><strong>React 一直都提倡使用**</strong>函数组件<strong><strong>，但是有时候需要使用 state 或者其他一些功能时，只能使用</strong></strong>类组件<strong><strong>，因为函数组件没有实例，</strong></strong>没有生命周期函数，只有类组件才有**</li>
-<li>Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</li>
-<li>如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks </li>
-<li>凡是 use 开头的 React API  都是 Hooks</li>
-</ul>
-<h2 id="二、Hooks-解决的问题"><a href="#二、Hooks-解决的问题" class="headerlink" title="二、Hooks 解决的问题"></a>二、Hooks 解决的问题</h2><h3 id="1-类组件的不足"><a href="#1-类组件的不足" class="headerlink" title="1. 类组件的不足"></a>1. 类组件的不足</h3><ul>
-<li><strong>状态逻辑难复用：</strong>在组件之间复用状态逻辑很难，可能要用到** render props** （<strong>渲染属性</strong>）或者 <strong>HOC</strong>（<strong>高阶组件</strong>），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），<strong>导致层级冗余</strong></li>
-<li><strong>趋向复杂难以维护：</strong><ul>
+        <h2 id="一、什么是-Hooks"><a href="#一、什么是-Hooks" class="headerlink" title="一、什么是 Hooks"></a>一、什么是 Hooks</h2><ul>
+<li><p><strong>React 一直都提倡使用**</strong>函数组件<strong><strong>，但是有时候需要使用 state 或者其他一些功能时，只能使用</strong></strong>类组件<strong><strong>，因为函数组件没有实例，</strong></strong>没有生命周期函数，只有类组件才有**</p>
+</li>
+<li><p>Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</p>
+</li>
+<li><p>如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks </p>
+</li>
+<li><p>凡是 use 开头的 React API  都是 Hooks</p>
+<a id="more"></a>
+<h2 id="二、Hooks-解决的问题"><a href="#二、Hooks-解决的问题" class="headerlink" title="二、Hooks 解决的问题"></a>二、Hooks 解决的问题</h2><h3 id="1-类组件的不足"><a href="#1-类组件的不足" class="headerlink" title="1. 类组件的不足"></a>1. 类组件的不足</h3></li>
+<li><p><strong>状态逻辑难复用：</strong>在组件之间复用状态逻辑很难，可能要用到** render props** （<strong>渲染属性</strong>）或者 <strong>HOC</strong>（<strong>高阶组件</strong>），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），<strong>导致层级冗余</strong></p>
+</li>
+<li><p><strong>趋向复杂难以维护：</strong></p>
+<ul>
 <li>在生命周期函数中混杂不相干的逻辑（如：在 <code>componentDidMount</code> 中注册事件以及其他的逻辑，在 <code>componentWillUnmount</code> 中卸载事件，这样分散不集中的写法，很容易写出 bug ）</li>
 <li>类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件</li>
 </ul>
 </li>
-<li><strong>this 指向问题：</strong>父组件给子组件传递函数时，必须绑定 this <ul>
+<li><p><strong>this 指向问题：</strong>父组件给子组件传递函数时，必须绑定 this </p>
+<ul>
 <li>react 中的组件四种绑定 this 方法的区别    </li>
 </ul>
 </li>

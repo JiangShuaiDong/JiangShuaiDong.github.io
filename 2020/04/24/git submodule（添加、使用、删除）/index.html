@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
   <title>git submodule（添加、使用、删除） | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作   子模块-添加添加子模块非常简单，在使用模块的项目中执行命令即可；命令如下： 123#url: 仓库地址#path：该模块在项目中的目录路径gi">
+  <meta name="description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git submodule（添加、使用、删除）">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2020&#x2F;04&#x2F;24&#x2F;git%20submodule%EF%BC%88%E6%B7%BB%E5%8A%A0%E3%80%81%E4%BD%BF%E7%94%A8%E3%80%81%E5%88%A0%E9%99%A4%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作   子模块-添加添加子模块非常简单，在使用模块的项目中执行命令即可；命令如下： 123#url: 仓库地址#path：该模块在项目中的目录路径gi">
+<meta property="og:description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-24T02:57:28.206Z">
+<meta property="og:updated_time" content="2020-04-24T03:25:22.042Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -177,6 +177,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。<br>本文主要讲解 git中submodule的添加、使用、删除基本操作 </p>
+<a id="more"></a>
 <hr>
 <h2 id="子模块-添加"><a href="#子模块-添加" class="headerlink" title="子模块-添加"></a>子模块-添加</h2><p>添加子模块非常简单，在使用模块的项目中执行命令即可；<br>命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#url: 仓库地址</span><br><span class="line">#path：该模块在项目中的目录路径</span><br><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>

@@ -1121,19 +1121,19 @@ html {
 
 .article-entry .highlight,
 .article-entry pre {
-  background: #272822;
+  background: #CCFBFF;
   margin: 10px 0;
   padding: 10px;
   overflow: auto;
-  color: #fff;
+  color: #0000FF;
   font-size: .9em;
-  line-height: 22.400000000000002px
+  line-height: 22.400000000000002px;
 }
 
 .article-entry .gist .gist-file .gist-data .line-numbers,
 .article-entry .highlight .gutter pre,
 .article-entry .highlight .gutter pre .line {
-  color: #666
+  color: #3CB371
 }
 
 .article-entry code,
@@ -1155,6 +1155,7 @@ html {
 }
 
 .article-entry .highlight {
+  border: 1px solid #ADD8E6;
   border-radius: 4px
 }
 
@@ -1204,7 +1205,7 @@ html {
 }
 
 .article-entry .highlight .line {
-  color: #fff;
+  color: #888;
   min-height: 19px
 }
 
@@ -2197,19 +2198,19 @@ pre .id {
 
 .article-inner h1.article-title,
 .article-title {
-  color: #696969;
-  margin-left: 0;
-  font-weight: 300;
-  line-height: 35px;
-  margin-bottom: 20px;
-  font-size: 26px;
-  transition: color .3s
+    color: #000000;
+    margin-left: 0;
+    font-weight: 300;
+    line-height: 35px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    transition: color .3s;
 }
 
 .article-header {
   border-left: 5px solid #4d4d4d;
   padding: 30px 0 15px 25px;
-  padding-left: 7.6923%
+  padding-left: 25pxs
 }
 
 .article-meta {
@@ -2239,13 +2240,13 @@ pre .id {
 }
 
 .article-more-link a {
-  background: #4d4d4d;
-  color: #fff;
+  background: #008B8B;
+  color: #F5FFFA;
   font-size: 12px;
   padding: 5px 8px;
   line-height: 16px;
   border-radius: 2px;
-  transition: background .3s
+  transition: background .3s;
 }
 
 .article-more-link a:hover {
@@ -2468,14 +2469,15 @@ pre .id {
 }
 
 .article-entry pre {
-  line-height: 1.5;
-  margin-top: 10px;
-  padding: 5px 15px;
-  overflow-x: auto;
-  color: #657b83;
-  border: 1px solid #ccc;
-  text-shadow: 0 1px #444;
-  font-family: Menlo, Monaco, Andale Mono, lucida console, Courier New, monospace
+    line-height: 1.5;
+    margin-top: 10px;
+    padding: 5px 15px;
+    overflow-x: auto;
+    color: #000;
+    border-radius: 6px;
+    border: 1px solid #E6E6FA;
+    text-shadow: 0 1px #fff;
+    font-family: Menlo,Monaco,Andale Mono,lucida console,Courier New,monospace;
 }
 
 .article-entry pre code {
