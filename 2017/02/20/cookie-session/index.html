@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>Archives: 2020 | JimBoBo</title>
+  <title>cookie和session | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimBoBo">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="众所周知，HTTP 是一个无状态协议，所以客户端每次发出请求时，下一次请求无法得知上一次请求所包含的状态数据. cookie">
+<meta name="keywords" content="Node,服务端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cookie和session">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2017&#x2F;02&#x2F;20&#x2F;cookie-session&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="前端">
+<meta property="og:description" content="众所周知，HTTP 是一个无状态协议，所以客户端每次发出请求时，下一次请求无法得知上一次请求所包含的状态数据. cookie">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-10T06:09:18.660Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -148,140 +150,262 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cookie-session" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cookie和session
+    </h1>
+  
+
+        
+        <a href="/2017/02/20/cookie-session/" class="archive-article-date">
+  	<time datetime="2017-02-20T07:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-20</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>众所周知，HTTP 是一个无状态协议，所以客户端每次发出请求时，下一次请求无法得知上一次请求所包含的状态数据.</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><a id="more"></a>
+<p>首先产生了 cookie 这门技术来解决这个问题，cookie 是 http 协议的一部分，它的处理分为如下几步：</p>
+<ol>
+<li>服务器向客户端发送 cookie。<ul>
+<li>通常使用 HTTP 协议规定的 set-cookie 头操作。</li>
+<li>规范规定 cookie 的格式为 name = value 格式，且必须包含这部分。</li>
+</ul>
+</li>
+<li>浏览器将 cookie 保存。</li>
+<li>每次请求浏览器都会将 cookie 发向服务器。</li>
+</ol>
+<p>其他可选的 cookie 参数会影响将 cookie 发送给服务器端的过程，主要有以下几种：</p>
+<ul>
+<li>path：表示 cookie 影响到的路径，匹配该路径才发送这个 cookie。</li>
+<li>expires 和 maxAge：告诉浏览器这个 cookie 什么时候过期，expires 是 UTC 格式时间，maxAge 是 cookie 多久后过期的相对时间。当不设置这两个选项时，会产生 session cookie，session cookie 是 transient 的，当用户关闭浏览器时，就被清除。一般用来保存 session 的 session_id。</li>
+<li>secure：当 secure 值为 true 时，cookie 在 HTTP 中是无效，在 HTTPS 中才有效。</li>
+<li>httpOnly：浏览器不允许脚本操作 document.cookie 去更改 cookie。一般情况下都应该设置这个为 true，这样可以避免被 xss 攻击拿到 cookie。</li>
+</ul>
+<h3 id="express-中的-cookie"><a href="#express-中的-cookie" class="headerlink" title="express 中的 cookie"></a>express 中的 cookie</h3><p>express 在 4.x 版本之后，session管理和cookies等许多模块都不再直接包含在express中，而是需要单独添加相应模块。</p>
+<p>express4 中操作 cookie 使用 cookie-parser 模块(<a href="https://github.com/expressjs/cookie-parser" target="_blank" rel="noopener">https://github.com/expressjs/cookie-parser</a> )。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">// 首先引入 cookie-parser 这个模块</span><br><span class="line">var cookieParser = require(&apos;cookie-parser&apos;);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line">app.listen(3000);</span><br><span class="line"></span><br><span class="line">// 使用 cookieParser 中间件，cookieParser(secret, options)</span><br><span class="line">// 其中 secret 用来加密 cookie 字符串（下面会提到 signedCookies）</span><br><span class="line">// options 传入上面介绍的 cookie 可选参数</span><br><span class="line">app.use(cookieParser());</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">  // 如果请求中的 cookie 存在 isVisit, 则输出 cookie</span><br><span class="line">  // 否则，设置 cookie 字段 isVisit, 并设置过期时间为1分钟</span><br><span class="line">  if (req.cookies.isVisit) &#123;</span><br><span class="line">    console.log(req.cookies);</span><br><span class="line">    res.send(&quot;再次欢迎访问&quot;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    res.cookie(&apos;isVisit&apos;, 1, &#123;maxAge: 60 * 1000&#125;); //第一个值：cookie名 第二个值：cookie值 第三个cookie配置</span><br><span class="line">    res.send(&quot;欢迎第一次访问&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>cookie 虽然很方便，但是使用 cookie 有一个很大的弊端，cookie 中的所有数据在客户端就可以被修改，数据非常容易被伪造，那么一些重要的数据就不能存放在 cookie 中了，而且如果 cookie 中数据字段太多会影响传输效率。为了解决这些问题，就产生了 session，session 中的数据是保留在服务器端的。</p>
+<p>session 的运作通过一个 session_id 来进行。session_id 通常是存放在客户端的 cookie 中，比如在 express 中，默认是 connect.sid 这个字段，当请求到来时，服务端检查 cookie 中保存的 session_id 并通过这个 session_id 与服务器端的 session data 关联起来，进行数据的保存和修改。</p>
+<p>这意思就是说，当你浏览一个网页时，服务端随机产生一个 1024 比特长的字符串，然后存在你 cookie 中的 connect.sid 字段中。当你下次访问时，cookie 会带有这个字符串，然后浏览器就知道你是上次访问过的某某某，然后从服务器的存储中取出上次记录在你身上的数据。由于字符串是随机产生的，而且位数足够多，所以也不担心有人能够伪造。伪造成功的概率比坐在家里编程时被邻居家的狗突然闯入并咬死的几率还低。</p>
+<p>session 可以存放在 1）内存、2）cookie本身、3）redis 或 memcached 等缓存中，或者4）数据库中。线上来说，缓存的方案比较常见，存数据库的话，查询效率相比前三者都太低，不推荐；cookie session 有安全性问题，下面会提到。</p>
+<p>express 中操作 session 要用到 express-session (<a href="https://github.com/expressjs/session" target="_blank" rel="noopener">https://github.com/expressjs/session</a> ) 这个模块，主要的方法就是 session(options)，其中 options 中包含可选参数，主要有：</p>
+<ul>
+<li>name: 设置 cookie 中，保存 session 的字段名称，默认为 connect.sid 。</li>
+<li>store: session 的存储方式，默认存放在内存中，也可以使用 redis，mongodb 等。express 生态中都有相应模块的支持。</li>
+<li>secret: 通过设置的 secret 字符串，来计算 hash 值并放在 cookie 中，使产生的 signedCookie 防篡改。</li>
+<li>cookie: 设置存放 session id 的 cookie 的相关选项，默认为<br>  (default: { path: ‘/‘, httpOnly: true, secure: false, maxAge: null })</li>
+<li>genid: 产生一个新的 session_id 时，所使用的函数， 默认使用 uid2 这个 npm 包。</li>
+<li>rolling: 每个请求都重新设置一个 cookie，默认为 false。</li>
+<li>resave: 即使 session 没有被修改，也保存 session 值，默认为 true。</li>
+</ul>
+<p>1） 在内存中存储 session</p>
+<p>express-session 默认使用内存来存 session，对于开发调试来说很方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">// 首先引入 express-session 这个模块</span><br><span class="line">var session = require(&apos;express-session&apos;);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line">app.listen(5000);</span><br><span class="line"></span><br><span class="line">// 按照上面的解释，设置 session 的可选参数</span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  secret: &apos;recommand 128 bytes random string&apos;, // 建议使用 128 个字符的随机字符串</span><br><span class="line">  cookie: &#123; maxAge: 60 * 1000 &#125;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line"></span><br><span class="line">  // 检查 session 中的 isVisit 字段</span><br><span class="line">  // 如果存在则增加一次，否则为 session 设置 isVisit 字段，并初始化为 1。</span><br><span class="line">  if(req.session.isVisit) &#123;</span><br><span class="line">    req.session.isVisit++;</span><br><span class="line">    res.send(&apos;&lt;p&gt;第 &apos; + req.session.isVisit + &apos;次来此页面&lt;/p&gt;&apos;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    req.session.isVisit = 1;</span><br><span class="line">    res.send(&quot;欢迎第一次来这里&quot;);</span><br><span class="line">    console.log(req.session);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2） 在 redis 中存储 session</p>
+<p>session 存放在内存中不方便进程间共享，因此可以使用 redis 等缓存来存储 session。</p>
+<p>假设你的机器是 4 核的，你使用了 4 个进程在跑同一个 node web 服务，当用户访问进程1时，他被设置了一些数据当做 session 存在内存中。而下一次访问时，他被负载均衡到了进程2，则此时进程2的内存中没有他的信息，认为他是个新用户。这就会导致用户在我们服务中的状态不一致。</p>
+<p>使用 redis 作为缓存，可以使用 connect-redis 模块(<a href="https://github.com/tj/connect-redis" target="_blank" rel="noopener">https://github.com/tj/connect-redis</a> )来得到 redis 连接实例，然后在 session 中设置存储方式为该实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var session = require(&apos;express-session&apos;);</span><br><span class="line">var redisStore = require(&apos;connect-redis&apos;)(session);</span><br><span class="line"></span><br><span class="line">var app = express();</span><br><span class="line">app.listen(5000);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">  // 假如你不想使用 redis 而想要使用 memcached 的话，代码改动也不会超过 5 行。</span><br><span class="line">  // 这些 store 都遵循着统一的接口，凡是实现了那些接口的库，都可以作为 session 的 store 使用，比如都需要实现 .get(keyString) 和 .set(keyString, value) 方法。</span><br><span class="line">  // 编写自己的 store 也很简单</span><br><span class="line">  store: new redisStore(),</span><br><span class="line">  secret: &apos;somesecrettoken&apos;</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, function (req, res) &#123;</span><br><span class="line">  if(req.session.isVisit) &#123;</span><br><span class="line">    req.session.isVisit++;</span><br><span class="line">    res.send(&apos;&lt;p&gt;第 &apos; + req.session.isVisit + &apos;次来到此页面&lt;/p&gt;&apos;);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    req.session.isVisit = 1;</span><br><span class="line">    res.send(&apos;欢迎第一次来这里&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="各种存储的利弊"><a href="#各种存储的利弊" class="headerlink" title="各种存储的利弊"></a>各种存储的利弊</h3><p>上面我们说到，session 的 store 有四个常用选项：1）内存 2）cookie 3）缓存 4）数据库</p>
+<p>其中，开发环境存内存就好了。一般的小程序为了省事，如果不涉及状态共享的问题，用内存 session 也没问题。但内存 session 除了省事之外，没有别的好处。</p>
+<p>cookie session 我们下面会提到，现在说说利弊。用 cookie session 的话，是不用担心状态共享问题的，因为 session 的 data 不是由服务器来保存，而是保存在用户浏览器端，每次用户访问时，都会主动带上他自己的信息。当然在这里，安全性之类的，只要遵照最佳实践来，也是有保证的。它的弊端是增大了数据量传输，利端是方便。</p>
+<p>缓存方式是最常用的方式了，即快，又能共享状态。相比 cookie session 来说，当 session data 比较大的时候，可以节省网络传输。推荐使用。</p>
+<p>数据库 session。除非你很熟悉这一块，知道自己要什么，否则还是老老实实用缓存吧。</p>
+<h3 id="signedCookie"><a href="#signedCookie" class="headerlink" title="signedCookie"></a>signedCookie</h3><p>cookie 虽然很方便，但是使用 cookie 有一个很大的弊端，cookie 中的所有数据在客户端就可以被修改，数据非常容易被伪造<br>```</p>
+
+      
+     
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+      <!-- 添加本文结束标记-->
+  
+    <div style="text-align:center;color: #00BFFF;font-size:14px;">
+         -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+         </div>
+    
+    <!-- 添加完成 -->
+     <!-- 开始添加版权声明-->
+     
+   
+     <div class="declare">
+       <ul><li><strong>本文作者：</strong>
+       
+         JimBoBo
+       
+     </li></ul>
+       <ul><li><strong>本文链接：</strong>
+     <a href="http://blog.jimbobo.me/2017/02/20/cookie-session/" target="_blank" rel="noopener">http://blog.jimbobo.me/2017/02/20/cookie-session/</a>
+     </li></ul>
+       <ul><li><strong>版权声明：</strong>
+       本作品采用
+       <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       进行许可。转载请注明出处！
+       
+     </li></ul>
+       
+     </div>
+   
+   <!-- 添加完成 -->
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/React%20Hooks/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/React%20Hooks/">React Hooks</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/git%20submodule/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/git%20submodule/">git submodule（添加、使用、删除）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/cookie/" class="archive-article-date">
-  	<time datetime="2020-03-10T13:41:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/cookie/">cookie SameSite</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Node</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">chrome</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">服务端</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2017/02/20/cookie-session/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/12/error-type/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JavaScript错误类型
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/07/16/iterm2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iterm2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -304,8 +428,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

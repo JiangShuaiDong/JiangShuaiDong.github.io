@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>Archives: 2020 | JimBoBo</title>
+  <title>react-props | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimBoBo">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="React中 state核props主要的区别在于props是不可变的，而state可以根据与用户交互来改变。这就是问什么有些容器组件需要定义state来更新和修改数据。而子组件只能通过state来传递数据。">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-props">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2016&#x2F;03&#x2F;27&#x2F;react-props&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="前端">
+<meta property="og:description" content="React中 state核props主要的区别在于props是不可变的，而state可以根据与用户交互来改变。这就是问什么有些容器组件需要定义state来更新和修改数据。而子组件只能通过state来传递数据。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-10T05:56:46.290Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -148,140 +150,269 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-props" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-props
+    </h1>
+  
+
+        
+        <a href="/2016/03/27/react-props/" class="archive-article-date">
+  	<time datetime="2016-03-27T13:41:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React中 state核props主要的区别在于props是不可变的，而state可以根据与用户交互来改变。这就是问什么有些容器组件需要定义state来更新和修改数据。而子组件只能通过state来传递数据。</p>
+<a id="more"></a>
+<h3 id="使用Props"><a href="#使用Props" class="headerlink" title="使用Props"></a>使用Props</h3><pre><code>var HelloMessage = React.createClass({
+      render: function() {
+    return &lt;h1&gt;Hello {this.props.name}&lt;/h1&gt;;
+  }
+});
+
+ReactDOM.render(
+  &lt;HelloMessage name=&quot;Runoob&quot; /&gt;,
+  document.getElementById(&apos;example&apos;)
+);</code></pre><h3 id="默认Props"><a href="#默认Props" class="headerlink" title="默认Props"></a>默认Props</h3><p>可以通过getDefaultProps()方法为props设置默认值</p>
+<pre><code>var WebSite = React.createClass({
+  getInitialState: function() {
+    return {
+      name: &quot;菜鸟教程&quot;,
+      site: &quot;http://www.runoob.com&quot;
+    };
+  },
+
+  render: function() {
+    return (
+      &lt;div&gt;
+        &lt;Name name={this.state.name} /&gt;
+        &lt;Link site={this.state.site} /&gt;
+      &lt;/div&gt;
+    );
+  }
+});
+
+var Name = React.createClass({
+  render: function() {
+    return (
+      &lt;h1&gt;{this.props.name}&lt;/h1&gt;
+    );
+  }
+});
+
+var Link = React.createClass({
+  render: function() {
+    return (
+      &lt;a href={this.props.site}&gt;
+        {this.props.site}
+      &lt;/a&gt;
+    );
+  }
+});
+
+React.render(
+  &lt;WebSite /&gt;,
+  document.getElementById(&apos;example&apos;)
+);</code></pre><h3 id="Props验证"><a href="#Props验证" class="headerlink" title="Props验证"></a>Props验证</h3><p>Props 验证使用 propTypes，它可以保证我们的应用组件被正确使用，React.PropTypes 提供很多验证器 (validator) 来验证传入数据是否有效。当向 props 传入无效数据时，JavaScript 控制台会抛出警告。<br>以下实例创建一个 Mytitle 组件，属性 title 是必须的且是字符串，如果是一个数字则会报错 ：</p>
+<pre><code>var title = &quot;jimliu&quot;;
+var MyTitle = React.createClass({
+    propTypes : {
+        title : React.PropTypes.string.isRequired
+    },
+    render : function () {
+        return &lt;h1&gt;{this.props.title}&lt;/h1&gt;
+    }
+});
+ReactDOM.render({
+    &lt;MyTitle title = {title} /&gt;,
+    document.getElementById(&apos;container&apos;);
+})</code></pre>
+      
+     
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+      <!-- 添加本文结束标记-->
+  
+    <div style="text-align:center;color: #00BFFF;font-size:14px;">
+         -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+         </div>
+    
+    <!-- 添加完成 -->
+     <!-- 开始添加版权声明-->
+     
+   
+     <div class="declare">
+       <ul><li><strong>本文作者：</strong>
+       
+         JimBoBo
+       
+     </li></ul>
+       <ul><li><strong>本文链接：</strong>
+     <a href="http://blog.jimbobo.me/2016/03/27/react-props/" target="_blank" rel="noopener">http://blog.jimbobo.me/2016/03/27/react-props/</a>
+     </li></ul>
+       <ul><li><strong>版权声明：</strong>
+       本作品采用
+       <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       进行许可。转载请注明出处！
+       
+     </li></ul>
+       
+     </div>
+   
+   <!-- 添加完成 -->
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/React%20Hooks/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/React%20Hooks/">React Hooks</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2016/03/27/react-props/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/git%20submodule/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2016/06/12/git-stash/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          git stash
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/10/react-version/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react更新版本的问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/git%20submodule/">git submodule（添加、使用、删除）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/cookie/" class="archive-article-date">
-  	<time datetime="2020-03-10T13:41:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/cookie/">cookie SameSite</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">chrome</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -304,8 +435,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

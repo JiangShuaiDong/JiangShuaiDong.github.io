@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>Archives: 2020 | JimBoBo</title>
+  <title>函数节流与函数防抖 | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JimBoBo">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;archives&#x2F;2020&#x2F;index.html">
+  <meta name="description" content="概念函数防抖（debounce）  当调用动作过n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数节流与函数防抖">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2018&#x2F;02&#x2F;02&#x2F;debounce&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="前端">
+<meta property="og:description" content="概念函数防抖（debounce）  当调用动作过n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-06-10T06:09:55.403Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -148,140 +150,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-debounce" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      函数节流与函数防抖
+    </h1>
+  
+
+        
+        <a href="/2018/02/02/debounce/" class="archive-article-date">
+  	<time datetime="2018-02-01T23:20:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><b>函数防抖（debounce）</b></p>
+<blockquote>
+<p>当调用动作过n毫秒后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间</p>
+</blockquote>
+<a id="more"></a>
+<p><b>函数节流（throttle）</b></p>
+<blockquote>
+<p>预先设定一个执行周期，当调用动作的时刻大于等于执行周期则执行该动作，然后进入下一个新周期</p>
+</blockquote>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><blockquote>
+<p>函数防抖：如果有人进电梯（触发事件），那电梯将在10秒钟后出发（执行事件监听器），这时如果又有人进电梯了（在10秒内再次触发该事件），我们又得等10秒再出发（重新计时）。</p>
+</blockquote>
+<blockquote>
+<p>函数节流 ：保证如果电梯第一个人进来后，10秒后准时运送一次，这个时间从第一个人上电梯开始计时，不等待，如果没有人，则不运行</p>
+</blockquote>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>函数防抖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function debounce(fn, wait) &#123;</span><br><span class="line">    var timer = null;</span><br><span class="line">    return function () &#123;</span><br><span class="line">        var context = this</span><br><span class="line">        var args = arguments</span><br><span class="line">        if (timer) &#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">            timer = null;</span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(function () &#123;</span><br><span class="line">            fn.apply(context, args)</span><br><span class="line">        &#125;, wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数节流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function throttle(fn, wait) &#123;</span><br><span class="line">    var previous = 0</span><br><span class="line">    var timer = null</span><br><span class="line">    return function () &#123;</span><br><span class="line">        var context = this</span><br><span class="line">        var args = arguments</span><br><span class="line">        if (!previous) &#123;</span><br><span class="line">            previous = Date.now()</span><br><span class="line">            fn.apply(context, args)</span><br><span class="line">        &#125; else if (previous + wait &gt;= Date.now()) &#123;</span><br><span class="line">            if (timer) &#123;</span><br><span class="line">                // console.log(timer)</span><br><span class="line">                clearTimeout(timer)</span><br><span class="line">                timer = null</span><br><span class="line">            &#125;</span><br><span class="line">            // console.log(timer)</span><br><span class="line">            timer = setTimeout(function () &#123;</span><br><span class="line">                // console.log(timer)</span><br><span class="line">                previous = Date.now()</span><br><span class="line">                fn.apply(context, args)</span><br><span class="line">            &#125;, wait)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            previous = Date.now()</span><br><span class="line">            fn.apply(context, args)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><b>函数防抖</b></p>
+<ul>
+<li>每次 resize/scroll 触发统计事件</li>
+<li>文本输入的验证（连续输入文字后发送 AJAX 请求进行验证，验证一次就好）</li>
+</ul>
+<p><b>函数节流</b></p>
+<ul>
+<li>DOM 元素的拖拽功能实现（mousemove）</li>
+<li>射击游戏的 mousedown/keydown 事件（单位时间只能发射一颗子弹）</li>
+<li>计算鼠标移动的距离（mousemove）</li>
+<li>Canvas 模拟画板功能（mousemove）</li>
+<li>搜索联想（keyup）</li>
+<li>监听滚动事件判断是否到页面底部自动加载更多：给 scroll 加了 debounce 后，只有用户停止滚动后，才会判断是否到了页面底部；如果是 throttle 的话，只要页面滚动就会间隔一段时间判断一次</li>
+</ul>
+
+      
+     
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+      <!-- 添加本文结束标记-->
+  
+    <div style="text-align:center;color: #00BFFF;font-size:14px;">
+         -------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------
+         </div>
+    
+    <!-- 添加完成 -->
+     <!-- 开始添加版权声明-->
+     
+   
+     <div class="declare">
+       <ul><li><strong>本文作者：</strong>
+       
+         JimBoBo
+       
+     </li></ul>
+       <ul><li><strong>本文链接：</strong>
+     <a href="http://blog.jimbobo.me/2018/02/02/debounce/" target="_blank" rel="noopener">http://blog.jimbobo.me/2018/02/02/debounce/</a>
+     </li></ul>
+       <ul><li><strong>版权声明：</strong>
+       本作品采用
+       <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       进行许可。转载请注明出处！
+       
+     </li></ul>
+       
+     </div>
+   
+   <!-- 添加完成 -->
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/React%20Hooks/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/React%20Hooks/">React Hooks</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2018/02/02/debounce/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/git%20submodule/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/03/10/cookie/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          cookie SameSite
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/19/download/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端下载文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/git%20submodule/">git submodule（添加、使用、删除）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/cookie/" class="archive-article-date">
-  	<time datetime="2020-03-10T13:41:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/cookie/">cookie SameSite</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">chrome</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -304,8 +407,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
