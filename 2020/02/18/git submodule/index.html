@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>iterm2 | JimBoBo</title>
+  <title>git submodule（添加、使用、删除） | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="iterm2快捷键记录标签  新建标签：command + t 关闭标签：command + w 切换标签：command + 数字    command + 左右方向键">
-<meta name="keywords" content="工具">
+  <meta name="description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iterm2">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2016&#x2F;07&#x2F;16&#x2F;iterm2&#x2F;index.html">
+<meta property="og:title" content="git submodule（添加、使用、删除）">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2020&#x2F;02&#x2F;18&#x2F;git%20submodule&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="iterm2快捷键记录标签  新建标签：command + t 关闭标签：command + w 切换标签：command + 数字    command + 左右方向键">
+<meta property="og:description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-10T05:53:59.242Z">
+<meta property="og:updated_time" content="2020-06-12T03:05:35.755Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -150,59 +150,82 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-iterm2" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-git submodule" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      iterm2
+      git submodule（添加、使用、删除）
     </h1>
   
 
         
-        <a href="/2016/07/16/iterm2/" class="archive-article-date">
-  	<time datetime="2016-07-16T02:40:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-16</time>
+        <a href="/2020/02/18/git%20submodule/" class="archive-article-date">
+  	<time datetime="2020-02-18T11:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="iterm2快捷键记录"><a href="#iterm2快捷键记录" class="headerlink" title="iterm2快捷键记录"></a>iterm2快捷键记录</h3><h5 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h5><blockquote>
-<ul>
-<li>新建标签：command + t</li>
-<li>关闭标签：command + w</li>
-<li>切换标签：command + 数字    command + 左右方向键</li>
-</ul>
-</blockquote>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。<br>本文主要讲解 git中submodule的添加、使用、删除基本操作 </p>
 <a id="more"></a>
+<hr>
+<h2 id="子模块-添加"><a href="#子模块-添加" class="headerlink" title="子模块-添加"></a>子模块-添加</h2><p>添加子模块非常简单，在使用模块的项目中执行命令即可；<br>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#url: 仓库地址</span><br><span class="line">#path：该模块在项目中的目录路径</span><br><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
 
-<h5 id="切换全屏：command-enter"><a href="#切换全屏：command-enter" class="headerlink" title="切换全屏：command + enter"></a>切换全屏：command + enter</h5><h5 id="查找：command-f"><a href="#查找：command-f" class="headerlink" title="查找：command + f"></a>查找：command + f</h5><h5 id="分屏"><a href="#分屏" class="headerlink" title="分屏"></a>分屏</h5><blockquote>
+<p>命令执行成功后，目录中会有以下改变</p>
 <ul>
-<li>垂直分屏：command + d</li>
-<li>水平分屏：command + shift + d</li>
-<li>切换屏幕：command + option + 方向键      command + [ 或 command + ]</li>
+<li>新增或修改.gitmodules</li>
+<li>增加执行命令中path路径目录，目录中为url模块代码</li>
 </ul>
-</blockquote>
-<h5 id="查看历史命令：command"><a href="#查看历史命令：command" class="headerlink" title="查看历史命令：command + ;"></a>查看历史命令：command + ;</h5><h5 id="查看剪贴板历史：command-shift-h"><a href="#查看剪贴板历史：command-shift-h" class="headerlink" title="查看剪贴板历史：command + shift + h"></a>查看剪贴板历史：command + shift + h</h5><h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><blockquote>
-<ul>
-<li>清除当前行：ctrl + u</li>
-<li>到行首：ctrl + a</li>
-<li>到行尾：ctrl + e</li>
-<li>前进后退：ctrl + f/b (相当于左右方向键)</li>
-<li>上一条命令：ctrl + p</li>
-<li>搜索命令历史：ctrl + r</li>
-<li>删除当前光标的字符：ctrl + d</li>
-<li>删除光标之前的字符：ctrl + h</li>
-<li>删除光标之前的单词：ctrl + w</li>
-<li>删除到文本末尾：ctrl + k</li>
-<li>交换光标处文本：ctrl + t</li>
-<li>清屏1：command + r</li>
-<li>清屏2：ctrl + l</li>
-</ul>
-</blockquote>
+<p>执行下面命令可以查看添加修改内容及子模块，并且新文件下为子模块的提交hash摘要</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+
+<p>执行提交添加命令完成子模块添加，子模块代码不会添加到版本库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="子模块-使用"><a href="#子模块-使用" class="headerlink" title="子模块-使用"></a>子模块-使用</h2><p>添加完子模块后，其他项目成员在克隆或拉去代码后，默认子模块对应目录下是无内容的，需要在项目的根目录执行如下命令完成子模块下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<p>命令执行成功后，子模块对应目录下就有了对应的源码，启动项目即可。</p>
+<hr>
+<h2 id="子模块-更新"><a href="#子模块-更新" class="headerlink" title="子模块-更新"></a>子模块-更新</h2><p>当子模块的项目研发人员更新了代码提交后，此时使用子模块的项目必须手动更新才能包含最新的提交，<br>方法一：<br>在项目中，进入子模块目录下，执行更新查看等操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p>方法二：<br>在项目根目录执行以下命令获取最新代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br><span class="line">git pull</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+
+<p>执行完更新操作后，返回项目根目录，可以看到子模块有待提交的更新，正常提交即可。</p>
+<hr>
+<h2 id="子模块-删除"><a href="#子模块-删除" class="headerlink" title="子模块-删除"></a>子模块-删除</h2><p>当我们项目中子模块地址更改，或者更换子模块的情况下、就需要删除原有子模块。<br>删除命令及步骤如下：</p>
+<ol>
+<li>删除子模块目录及源码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 子模块目录</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>删除项目目录下.gitmodules文件中子模块相关条目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi .gitmodules</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除配置项中子模块相关条目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi .git/config</span><br><span class="line">或者</span><br><span class="line">git submodule deinit 子模块目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm .git/module/*</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>以上命令执行成功后，再执行添加子模块命令即可，如果仍然报错，执行下面命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &apos;子模块名称&apos;</span><br></pre></td></tr></table></figure>
+
+<p>完成删除后，代码提交即可</p>
 
       
      
@@ -245,7 +268,7 @@
        
      </li></ul>
        <ul><li><strong>本文链接：</strong>
-     <a href="http://blog.jimbobo.me/2016/07/16/iterm2/" target="_blank" rel="noopener">http://blog.jimbobo.me/2016/07/16/iterm2/</a>
+     <a href="http://blog.jimbobo.me/2020/02/18/git%20submodule/" target="_blank" rel="noopener">http://blog.jimbobo.me/2020/02/18/git%20submodule/</a>
      </li></ul>
        <ul><li><strong>版权声明：</strong>
        本作品采用
@@ -267,7 +290,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
         		</li>
       		
 		</ul>
@@ -323,7 +346,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2016/07/16/iterm2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2020/02/18/git%20submodule/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -337,18 +360,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/20/cookie-session/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/03/10/cookie/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          cookie和session
+          cookie SameSite
         
       </div>
     </a>
   
   
-    <a href="/2016/06/12/git-stash/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git stash</div>
+    <a href="/2018/02/02/debounce/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数节流与函数防抖</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>git submodule（添加、使用、删除） | JimBoBo</title>
+  <title>数组常用方法 | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
-<meta name="keywords" content="Git">
+  <meta name="description" content="数组常用方法1.数组有以下方法 join  push()和pop()  shift()和 unshift()  sort()  reverse()  concat()  slice()  splice()  indexOf() 和 lastIndexOf  forEach()  map()  filter()  every()  some()   1. join()​    join 就是把数组">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git submodule（添加、使用、删除）">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2020&#x2F;04&#x2F;24&#x2F;git%20submodule&#x2F;index.html">
+<meta property="og:title" content="数组常用方法">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2015&#x2F;05&#x2F;20&#x2F;array&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="背景在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。本文主要讲解 git中submodule的添加、使用、删除基本操作">
+<meta property="og:description" content="数组常用方法1.数组有以下方法 join  push()和pop()  shift()和 unshift()  sort()  reverse()  concat()  slice()  splice()  indexOf() 和 lastIndexOf  forEach()  map()  filter()  every()  some()   1. join()​    join 就是把数组">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-10T05:50:39.987Z">
+<meta property="og:updated_time" content="2020-06-12T03:10:27.611Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -150,82 +150,125 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git submodule" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-array" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git submodule（添加、使用、删除）
+      数组常用方法
     </h1>
   
 
         
-        <a href="/2020/04/24/git%20submodule/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:49:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+        <a href="/2015/05/20/array/" class="archive-article-date">
+  	<time datetime="2015-05-20T11:30:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在庞大项目中经常引用其他仓库模块或者公共模块，定义为子模块，在git中使用子模块的功能能够大大提高开发效率。使用子模块后，不必负责子模块的维护，只需要在必要的时候同步更新子模块即可。<br>本文主要讲解 git中submodule的添加、使用、删除基本操作 </p>
-<a id="more"></a>
-<hr>
-<h2 id="子模块-添加"><a href="#子模块-添加" class="headerlink" title="子模块-添加"></a>子模块-添加</h2><p>添加子模块非常简单，在使用模块的项目中执行命令即可；<br>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#url: 仓库地址</span><br><span class="line">#path：该模块在项目中的目录路径</span><br><span class="line">git submodule add &lt;url&gt; &lt;path&gt;</span><br></pre></td></tr></table></figure>
-
-<p>命令执行成功后，目录中会有以下改变</p>
-<ul>
-<li>新增或修改.gitmodules</li>
-<li>增加执行命令中path路径目录，目录中为url模块代码</li>
+        <a id="more"></a>
+<h2 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h2><h3 id="1-数组有以下方法"><a href="#1-数组有以下方法" class="headerlink" title="1.数组有以下方法"></a>1.数组有以下方法</h3><ul>
+<li><p>join</p>
+</li>
+<li><p>push()和pop()</p>
+</li>
+<li><p>shift()和 unshift()</p>
+</li>
+<li><p>sort()</p>
+</li>
+<li><p>reverse()</p>
+</li>
+<li><p>concat()</p>
+</li>
+<li><p>slice()</p>
+</li>
+<li><p>splice()</p>
+</li>
+<li><p>indexOf() 和 lastIndexOf</p>
+</li>
+<li><p>forEach()</p>
+</li>
+<li><p>map()</p>
+</li>
+<li><p>filter()</p>
+</li>
+<li><p>every()</p>
+</li>
+<li><p>some()</p>
+</li>
 </ul>
-<p>执行下面命令可以查看添加修改内容及子模块，并且新文件下为子模块的提交hash摘要</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<h3 id="1-join"><a href="#1-join" class="headerlink" title="1. join()"></a>1. join()</h3><p>​    join 就是把数组转成字符串，然后用指定连接符将数组的每一项用连接符串起来，默认连接符是逗号 (“,”) ，且原数组不变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.join());		<span class="comment">// 1,2,3</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.join(<span class="string">'-'</span>)); <span class="comment">// 1-2-3</span></span><br><span class="line">consle.log(arr) 						<span class="comment">// [1,2,3] 原数组不变</span></span><br></pre></td></tr></table></figure>
 
-<p>执行提交添加命令完成子模块添加，子模块代码不会添加到版本库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+<h3 id="2-push和pop"><a href="#2-push和pop" class="headerlink" title="2.push和pop()"></a>2.push和pop()</h3><p>push()：将参数内容添加到数组末尾，并且返回修改后的长度<br>pop()：移除数组最后一项，返回移除的值，减少数组的length</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> count = arr.push(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count); 		<span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);				<span class="comment">// [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="keyword">var</span> item = arr.pop();</span><br><span class="line"><span class="built_in">console</span>.log(item); 			<span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);				<span class="comment">// [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="子模块-使用"><a href="#子模块-使用" class="headerlink" title="子模块-使用"></a>子模块-使用</h2><p>添加完子模块后，其他项目成员在克隆或拉去代码后，默认子模块对应目录下是无内容的，需要在项目的根目录执行如下命令完成子模块下载：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
+<h3 id="3-shift-和unshift"><a href="#3-shift-和unshift" class="headerlink" title="3.shift()和unshift()"></a>3.shift()和unshift()</h3><p>shift()：删除数组的第一项，并返回删除元素的值，如果数组为空则返回undefined;<br>unshift()：将参数添加到数组的开头，并返回数组的长度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> count = arr.unshift(<span class="number">4</span>,<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(count); 		<span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);				<span class="comment">// [4, 5, 1, 2, 3]</span></span><br><span class="line"><span class="keyword">var</span> item = arr.shift();</span><br><span class="line"><span class="built_in">console</span>.log(item); 			<span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);				<span class="comment">// [[5, 1, 2, 3]修改原数组</span></span><br></pre></td></tr></table></figure>
 
-<p>或</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+<h3 id="4-sort"><a href="#4-sort" class="headerlink" title="4.sort"></a>4.sort</h3><p>sort()：将数组从小到大排序</p>
+<ul>
+<li>改变原数组，返回新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.sort());	<span class="comment">//[1, 2, 3, 4]</span></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="string">'1'</span>,<span class="string">'aa'</span>,<span class="string">'5'</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="string">'b'</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr1.sort());	<span class="comment">//["1", 2, 3, "5", "aa", "b"]</span></span><br></pre></td></tr></table></figure>
 
-<p>命令执行成功后，子模块对应目录下就有了对应的源码，启动项目即可。</p>
-<hr>
-<h2 id="子模块-更新"><a href="#子模块-更新" class="headerlink" title="子模块-更新"></a>子模块-更新</h2><p>当子模块的项目研发人员更新了代码提交后，此时使用子模块的项目必须手动更新才能包含最新的提交，<br>方法一：<br>在项目中，进入子模块目录下，执行更新查看等操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line">git log</span><br></pre></td></tr></table></figure>
+<p>sort() 方法比较的事字符串，没有按照数值的大小对数字进行排序，要实现这一点，就必须用给一个排序函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortNumber</span>(<span class="params">a,b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> a - b</span><br><span class="line">&#125;</span><br><span class="line">arr = [<span class="number">13</span>,<span class="string">'a'</span>, <span class="string">'懂'</span>,<span class="string">'b'</span>,<span class="number">24</span>, <span class="number">51</span>, <span class="number">3</span>]; </span><br><span class="line"><span class="built_in">console</span>.log(arr.sort()); 　　　　　　　　　　	<span class="comment">// [13, 24, 3, 51, "a", "b", "懂"] </span></span><br><span class="line"><span class="built_in">console</span>.log(arr.sort(sortNumber));				<span class="comment">//  [3, 13, 24, 51, "a", "b", "懂"]</span></span><br></pre></td></tr></table></figure>
 
-<p>方法二：<br>在项目根目录执行以下命令获取最新代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --init --recursive</span><br><span class="line">git pull</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
 
-<p>执行完更新操作后，返回项目根目录，可以看到子模块有待提交的更新，正常提交即可。</p>
-<hr>
-<h2 id="子模块-删除"><a href="#子模块-删除" class="headerlink" title="子模块-删除"></a>子模块-删除</h2><p>当我们项目中子模块地址更改，或者更换子模块的情况下、就需要删除原有子模块。<br>删除命令及步骤如下：</p>
-<ol>
-<li>删除子模块目录及源码</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 子模块目录</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li><p>删除项目目录下.gitmodules文件中子模块相关条目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi .gitmodules</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除配置项中子模块相关条目</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi .git/config</span><br><span class="line">或者</span><br><span class="line">git submodule deinit 子模块目录</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm .git/module/*</span><br></pre></td></tr></table></figure>
+<h3 id="5-reverse"><a href="#5-reverse" class="headerlink" title="5.reverse()"></a>5.reverse()</h3><p>reverse()：反转数组项的书序</p>
+<ul>
+<li>不改变原有数组，返回新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.reverse());			<span class="comment">//[1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr)								<span class="comment">//[1, 2, 3, 4, 5] 原数组不变</span></span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>以上命令执行成功后，再执行添加子模块命令即可，如果仍然报错，执行下面命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &apos;子模块名称&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="6-concat"><a href="#6-concat" class="headerlink" title="6.concat()"></a>6.concat()</h3><p>concat()：将参数添加到原数组中。这个方法会先创建当前数组一个副本，然后将接收到的参数添加到这个副本的末尾，最后返回新构建的数组。在没有给 concat()方法传递参数的情况下，它只是复制当前数组并返回副本。</p>
+<ul>
+<li>不改变原有数组，返回新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr1 = arr.concat();</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.concat(<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> arr3 = arr.concat([<span class="number">5</span>,<span class="number">6</span>]);</span><br><span class="line"><span class="keyword">var</span> arr4 = arr.concat(<span class="number">7</span>,[<span class="number">8</span>,<span class="number">9</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(arr1);		<span class="comment">//[1, 2, 3]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2);		<span class="comment">//[1, 2, 3, 4]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr3);		<span class="comment">//[1, 2, 3, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr4);		<span class="comment">//[1, 2, 3, 7, 8, 9]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);			<span class="comment">//[1, 2, 3] 原来数组未被修改</span></span><br></pre></td></tr></table></figure>
 
-<p>完成删除后，代码提交即可</p>
+<h3 id="7-slice"><a href="#7-slice" class="headerlink" title="7.slice()"></a>7.slice()</h3><p>slice()：返回从原数组指定开始下标到结束下标之间的项组成的新数组，slice()方法接受一或者两个参数，为要返回项的起始和结束为止，在没有传参数的情况下，复制数组所有项，在只有一个参数的情况下，返回从改参数指定为止开始到当前数组末尾的所有项，如果参数为负数，则参数需要转换，参数加上数组长度转成正数，包前不包后，</p>
+<ul>
+<li>不改变原有数组，返回新数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>];</span><br><span class="line"><span class="keyword">var</span> arrCopy = arr.slice();</span><br><span class="line"><span class="keyword">var</span> arrCopy1 = arr.slice(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">var</span> arrCopy2 = arr.slice(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> arrCopy3 = arr.slice(<span class="number">1</span>,<span class="number">-2</span>);</span><br><span class="line"><span class="keyword">var</span> arrCopy4 = arr.slice(<span class="number">-4</span>,<span class="number">-1</span>);	<span class="comment">//等价于arr.slice(2,5)</span></span><br><span class="line"><span class="built_in">console</span>.log(arrCopy); 　　　　　　　　　　　 <span class="comment">//[1,3, 5, 7, 9, 11]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrCopy1); 　　　　　　　　　　　<span class="comment">//[3, 5, 7, 9, 11]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrCopy2); 　　　　　　　　　　　<span class="comment">//[3, 5, 7]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrCopy3); 　　　　　　　　　　　<span class="comment">//[3, 5, 7]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrCopy4);									 <span class="comment">//[5, 7, 9]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr); 　　　　　　　　　　　　　 <span class="comment">//[1, 3, 5, 7, 9, 11](原数组没变)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-splice"><a href="#8-splice" class="headerlink" title="8.splice()"></a>8.splice()</h3><p>splice()：删除、插入、替换</p>
+<ul>
+<li>删除：两个参数，第一个参数为：开始项的下标，第二个参数为：删除个数</li>
+<li>插入：三个参数，第一个参数为：开始项的下标，第二个参数为：删除个数，第三个参数为：在开始位置要插入的项</li>
+<li>替换：三个参数，第一个参数为：开始项的下标，第二个参数为：删除个数，第三个参数为：在开始位置要插入任意数量项，不必与删除的项数相等，</li>
+<li>包前（返回要删除项的数组，改变原数组）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="keyword">var</span> arrRemove = arr.splice(<span class="number">0</span>,<span class="number">2</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrRemove);<span class="comment">//	[1, 2]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//	[3, 4, 5, 6]</span></span><br><span class="line"><span class="keyword">var</span> arrAdd = arr.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrAdd);<span class="comment">//[]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//[3, 4, 9, 8, 5, 6]</span></span><br><span class="line"><span class="keyword">var</span> arrReplace = arr.splice(<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">8</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arrReplace);<span class="comment">//[9, 8]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//[3, 4, 9, 8, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-indexOf-和-lastIndexOf"><a href="#9-indexOf-和-lastIndexOf" class="headerlink" title="9.indexOf() 和 lastIndexOf"></a>9.indexOf() 和 lastIndexOf</h3><p>indexOf()：接收两个参数，1.要查找的项    2.表示查找起点位置的索引（可选）从前向后找</p>
+<p>lastIndexOf：接收两个参数，1.要查找的项    2.表示查找起点位置的索引（可选）从后向前找</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">5</span>)); 　　　　　　<span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.lastIndexOf(<span class="number">5</span>)); 　　　 <span class="comment">//5</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">5</span>,<span class="number">2</span>)); 　　　　 <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.lastIndexOf(<span class="number">5</span>,<span class="number">1</span>)); 　　<span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="string">"5"</span>)); 　　　　 <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-forEach"><a href="#10-forEach" class="headerlink" title="10. forEach()"></a>10. forEach()</h3><p>forEach()：对数组进行遍历循环，对数组中的每一项运行给定函数。这个方法没有返回值。参数都是function类型，默认有传参，参数分别为：遍历下标的对应数组内容；第对应的数组索引，数组本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index, list</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(item,index,list);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//1 0 [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">//2 1 [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">//3 2 [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">//4 3 [1, 2, 3, 4, 5]</span></span><br><span class="line"><span class="comment">//5 4 [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-map"><a href="#11-map" class="headerlink" title="11.map()"></a>11.map()</h3><p>map()：指“映射”，对数组中的每一项运行给定处理函数，返回每次函数调用的结果组成的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> item*item;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(arr2); 　　　　　　　　<span class="comment">//[1, 4, 9, 16, 25]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="12-filter"><a href="#12-filter" class="headerlink" title="12.filter()"></a>12.filter()</h3><p>filter()：”过滤”功能，数组中的每一项运行给定处理函数，返回满足过滤条件组成的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x, index</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> index % <span class="number">2</span></span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(arr2);			<span class="comment">//[2, 4, 6, 8, 10]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="13-every"><a href="#13-every" class="headerlink" title="13.every()"></a>13.every()</h3><p>every()：判断数组中每一项都是否满足条件，只有所有项都满足条件，才会返回true</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &lt; <span class="number">10</span>;</span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(arr2); 　　　　　　　　<span class="comment">//true</span></span><br><span class="line"><span class="keyword">var</span> arr3 = arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &lt; <span class="number">3</span>;</span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(arr3); 　　　　　　　　<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="14-some"><a href="#14-some" class="headerlink" title="14. some()"></a>14. some()</h3><p>some()：判断数组中是否存在满足条件的项，只要有一项满足条件，就会返回true</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &lt; <span class="number">3</span>;</span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(arr2); 　　　　　　　　<span class="comment">//true</span></span><br><span class="line"><span class="keyword">var</span> arr3 = arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &lt; <span class="number">1</span>;</span><br><span class="line">&#125;); </span><br><span class="line"><span class="built_in">console</span>.log(arr3); 　　　　　　　　<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+
+
 
       
      
@@ -268,7 +311,7 @@
        
      </li></ul>
        <ul><li><strong>本文链接：</strong>
-     <a href="http://blog.jimbobo.me/2020/04/24/git%20submodule/" target="_blank" rel="noopener">http://blog.jimbobo.me/2020/04/24/git%20submodule/</a>
+     <a href="http://blog.jimbobo.me/2015/05/20/array/" target="_blank" rel="noopener">http://blog.jimbobo.me/2015/05/20/array/</a>
      </li></ul>
        <ul><li><strong>版权声明：</strong>
        本作品采用
@@ -290,7 +333,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -346,7 +389,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2020/04/24/git%20submodule/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2015/05/20/array/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -360,20 +403,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/24/React%20Hooks/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/10/react-version/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          React Hooks
+          react更新版本的问题
         
       </div>
     </a>
   
-  
-    <a href="/2020/03/10/cookie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cookie SameSite</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -497,23 +535,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">chrome</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,11 +555,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务端</a>
               </li>
             
             <div class="clearfix"></div>
