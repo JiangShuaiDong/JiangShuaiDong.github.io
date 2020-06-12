@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://blog.jimbobo.me">
-  <title>前端下载文件 | JimBoBo</title>
+  <title>继承 | JimBoBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介前端下载文件是一个非常常见的需求，但由于浏览器的安全策略的限制，我们通常只能通过一个额外的页面，访问某个文件的 url 来实现下载功能，但是这种用户体验非常不好。不过HTML5提供了download的属性。 1&amp;lt;a href=&amp;quot;http:&#x2F;&#x2F;somehost&#x2F;somefile.zip&amp;quot; download=&amp;quot;filename.zip&amp;quot;&amp;gt;下载文件">
+  <meta name="description" content="第一种写法123456789101112131415161718192021222324252627282930class Father &amp;#123;    static staticFatherName = &quot;FatherName&quot;    static staticGetFatherName = function () &amp;#123;        console.log(Father.stat">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端下载文件">
-<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2017&#x2F;10&#x2F;19&#x2F;download&#x2F;index.html">
+<meta property="og:title" content="继承">
+<meta property="og:url" content="http:&#x2F;&#x2F;blog.jimbobo.me&#x2F;2018&#x2F;06&#x2F;27&#x2F;%E7%BB%A7%E6%89%BF&#x2F;index.html">
 <meta property="og:site_name" content="JimBoBo">
-<meta property="og:description" content="简介前端下载文件是一个非常常见的需求，但由于浏览器的安全策略的限制，我们通常只能通过一个额外的页面，访问某个文件的 url 来实现下载功能，但是这种用户体验非常不好。不过HTML5提供了download的属性。 1&amp;lt;a href=&amp;quot;http:&#x2F;&#x2F;somehost&#x2F;somefile.zip&amp;quot; download=&amp;quot;filename.zip&amp;quot;&amp;gt;下载文件">
+<meta property="og:description" content="第一种写法123456789101112131415161718192021222324252627282930class Father &amp;#123;    static staticFatherName = &quot;FatherName&quot;    static staticGetFatherName = function () &amp;#123;        console.log(Father.stat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-10T05:51:45.296Z">
+<meta property="og:updated_time" content="2020-06-12T05:52:32.991Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="JimBoBo" type="application/atom+xml">
@@ -150,41 +150,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-download" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-继承" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      前端下载文件
+      继承
     </h1>
   
 
         
-        <a href="/2017/10/19/download/" class="archive-article-date">
-  	<time datetime="2017-10-19T05:36:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+        <a href="/2018/06/27/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+  	<time datetime="2018-06-27T13:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>前端下载文件是一个非常常见的需求，但由于浏览器的安全策略的限制，我们通常只能通过一个额外的页面，访问某个文件的 url 来实现下载功能，但是这种用户体验非常不好。<br>不过HTML5提供了download的属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://somehost/somefile.zip&quot; download=&quot;filename.zip&quot;&gt;下载文件&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>上面的例子就是HTML5下载文件 添加download属性 下载的文件名就为filename.zip</p>
-<p>当然我们也可以使用javascript来进行操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = document.createElement(&apos;a&apos;);</span><br><span class="line">var url = window.URL.createObjectURL(blob);</span><br><span class="line">var filename = &apos;what-you-want.txt&apos;;</span><br><span class="line">a.href = url;</span><br><span class="line">a.download = filename;</span><br><span class="line">a.click();</span><br><span class="line">window.URL.revokeObjectURL(url);</span><br></pre></td></tr></table></figure>
+        <a id="more"></a>
+<h3 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> staticFatherName = <span class="string">"FatherName"</span></span><br><span class="line">    <span class="keyword">static</span> staticGetFatherName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Father.staticFatherName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constructor</span>(public name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    getName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> staticChildName = <span class="string">"ChildName"</span></span><br><span class="line">    <span class="keyword">static</span> staticGetChildName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Child.staticChildName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constructor</span>(public name, public age) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    getAge() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> Child(<span class="string">'zhufeng'</span>, <span class="number">10</span>);</span><br><span class="line">child.getName();</span><br><span class="line">child.getAge();</span><br><span class="line">Child.staticGetFatherName();</span><br><span class="line">Child.staticGetChildName()</span><br></pre></td></tr></table></figure>
 
-<h2 id="window-URL"><a href="#window-URL" class="headerlink" title="window.URL"></a>window.URL</h2><p>window.url中有两个方法</p>
-<ul>
-<li>createObjectURL： 用 blob 对象来创建一个 object URL(它是一个 DOMString)，我们可以用这个 object URL 来表示某个 blob 对象，这个 object URL 可以用在 href 和 src 之类的属性上。</li>
-<li>revokeObjectURL： 释放由 createObjectURL 创建的 object URL，当该 object URL 不需要的时候，我们要主动调用这个方法来获取最佳性能和内存使用。</li>
-</ul>
-<p>知道了这两个方法之后，我们再回去看看上面的例子就很容易理解了吧！只是用 blob 对象来创建一条 URL，然后让 a 标签引用该 URL，然后触发个点击事件，就可以下载文件了。</p>
-<h2 id="Blob-对象"><a href="#Blob-对象" class="headerlink" title="Blob 对象"></a>Blob 对象</h2><p>Blob 全称是 Binary large object，它表示一个类文件对象，可以用它来表示一个文件。根据 MDN 上面的说法，File API 也是基于 blob 来实现的。</p>
-<p>我们接下来用fetch的方式来实现刚才的下载代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">fetch(&apos;http://somehost/somefile.zip&apos;).then(res =&gt; res.blob().then(blob =&gt; &#123;</span><br><span class="line">    var a = document.createElement(&apos;a&apos;);</span><br><span class="line">    var url = window.URL.createObjectURL(blob);</span><br><span class="line">    var filename = &apos;myfile.zip&apos;;</span><br><span class="line">    a.href = url;</span><br><span class="line">    a.download = filename;</span><br><span class="line">    a.click();</span><br><span class="line">    window.URL.revokeObjectURL(url);</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<h3 id="第二种写法"><a href="#第二种写法" class="headerlink" title="第二种写法"></a>第二种写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _extends = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> extendStatics = <span class="function"><span class="keyword">function</span> (<span class="params">Child, Father</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.setPrototypeOf(Child, Father);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">Child, Father</span>) </span>&#123;</span><br><span class="line">        extendStatics(Child, Father); <span class="comment">//继承静态属性方法</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Temp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">//this.constructor = Child;</span></span><br><span class="line">        &#125;</span><br><span class="line">        Temp.prototype = Father.prototype;</span><br><span class="line">        Temp.prototype.constructor = Child; <span class="comment">//保证指针是正确的</span></span><br><span class="line">        Child.prototype = <span class="keyword">new</span> Temp(); <span class="comment">//继承Temp实例</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Father = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name; <span class="comment">//私有属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    Father.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    Father.staticFatherName = <span class="string">'FatherName'</span>;<span class="comment">//静态属性</span></span><br><span class="line">    Father.staticGetFatherName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//静态方法</span></span><br><span class="line">        <span class="built_in">console</span>.log(Father.staticFatherName)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Father;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">//_super父类构造函数</span></span><br><span class="line"><span class="keyword">var</span> Child = (<span class="function"><span class="keyword">function</span> (<span class="params">_super</span>) </span>&#123;</span><br><span class="line">    _extends(Child, _super);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">        _super.call(<span class="keyword">this</span>, name);<span class="comment">//继承父类的实例私有属性</span></span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Child.prototype.getAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;;</span><br><span class="line">    Child.staticChildName = <span class="string">"ChildName"</span>;</span><br><span class="line">    Child.staticGetChildName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Child.staticChildName);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> Child;</span><br><span class="line">&#125;(Father));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> Child(<span class="string">'jsdong'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(child.constructor === Child);</span><br><span class="line"><span class="built_in">console</span>.log(child.construetor === Father);</span><br><span class="line">child.getName();</span><br><span class="line">child.getAge();</span><br><span class="line">Child.staticGetFatherName();</span><br><span class="line">Child.staticGetChildName();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
       
      
       
@@ -226,7 +220,7 @@
        
      </li></ul>
        <ul><li><strong>本文链接：</strong>
-     <a href="http://blog.jimbobo.me/2017/10/19/download/" target="_blank" rel="noopener">http://blog.jimbobo.me/2017/10/19/download/</a>
+     <a href="http://blog.jimbobo.me/2018/06/27/%E7%BB%A7%E6%89%BF/" target="_blank" rel="noopener">http://blog.jimbobo.me/2018/06/27/%E7%BB%A7%E6%89%BF/</a>
      </li></ul>
        <ul><li><strong>版权声明：</strong>
        本作品采用
@@ -304,7 +298,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2017/10/19/download/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blog.jimbobo.me/2018/06/27/%E7%BB%A7%E6%89%BF/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -318,18 +312,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/02/02/debounce/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/18/git%20submodule/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          函数节流与函数防抖
+          git submodule（添加、使用、删除）
         
       </div>
     </a>
   
   
-    <a href="/2017/06/12/error-type/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JavaScript错误类型</div>
+    <a href="/2018/02/02/debounce/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">函数节流与函数防抖</div>
       <i class="icon-circle-right"></i>
     </a>
   

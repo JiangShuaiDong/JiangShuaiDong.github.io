@@ -414,6 +414,97 @@
 
 
   
+    <article id="post-继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/27/%E7%BB%A7%E6%89%BF/">继承</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/27/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
+  	<time datetime="2018-06-27T13:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h3 id="第一种写法"><a href="#第一种写法" class="headerlink" title="第一种写法"></a>第一种写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> staticFatherName = <span class="string">"FatherName"</span></span><br><span class="line">    <span class="keyword">static</span> staticGetFatherName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Father.staticFatherName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constructor</span>(public name) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    getName() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Father</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> staticChildName = <span class="string">"ChildName"</span></span><br><span class="line">    <span class="keyword">static</span> staticGetChildName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Child.staticChildName);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">constructor</span>(public name, public age) &#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    getAge() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> Child(<span class="string">'zhufeng'</span>, <span class="number">10</span>);</span><br><span class="line">child.getName();</span><br><span class="line">child.getAge();</span><br><span class="line">Child.staticGetFatherName();</span><br><span class="line">Child.staticGetChildName()</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二种写法"><a href="#第二种写法" class="headerlink" title="第二种写法"></a>第二种写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _extends = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> extendStatics = <span class="function"><span class="keyword">function</span> (<span class="params">Child, Father</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.setPrototypeOf(Child, Father);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">Child, Father</span>) </span>&#123;</span><br><span class="line">        extendStatics(Child, Father); <span class="comment">//继承静态属性方法</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Temp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">//this.constructor = Child;</span></span><br><span class="line">        &#125;</span><br><span class="line">        Temp.prototype = Father.prototype;</span><br><span class="line">        Temp.prototype.constructor = Child; <span class="comment">//保证指针是正确的</span></span><br><span class="line">        Child.prototype = <span class="keyword">new</span> Temp(); <span class="comment">//继承Temp实例</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Father = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Father</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name; <span class="comment">//私有属性</span></span><br><span class="line">    &#125;</span><br><span class="line">    Father.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    Father.staticFatherName = <span class="string">'FatherName'</span>;<span class="comment">//静态属性</span></span><br><span class="line">    Father.staticGetFatherName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//静态方法</span></span><br><span class="line">        <span class="built_in">console</span>.log(Father.staticFatherName)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Father;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line"><span class="comment">//_super父类构造函数</span></span><br><span class="line"><span class="keyword">var</span> Child = (<span class="function"><span class="keyword">function</span> (<span class="params">_super</span>) </span>&#123;</span><br><span class="line">    _extends(Child, _super);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">        _super.call(<span class="keyword">this</span>, name);<span class="comment">//继承父类的实例私有属性</span></span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Child.prototype.getAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;;</span><br><span class="line">    Child.staticChildName = <span class="string">"ChildName"</span>;</span><br><span class="line">    Child.staticGetChildName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Child.staticChildName);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> Child;</span><br><span class="line">&#125;(Father));</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> child = <span class="keyword">new</span> Child(<span class="string">'jsdong'</span>, <span class="number">10</span>);</span><br><span class="line"><span class="built_in">console</span>.log(child.constructor === Child);</span><br><span class="line"><span class="built_in">console</span>.log(child.construetor === Father);</span><br><span class="line">child.getName();</span><br><span class="line">child.getAge();</span><br><span class="line">Child.staticGetFatherName();</span><br><span class="line">Child.staticGetChildName();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+     
+      
+      <!-- 添加本文结束标记-->
+  
+    <!-- 添加完成 -->
+     <!-- 开始添加版权声明-->
+     
+   
+     <div class="declare" hidden="hidden"></div>
+   
+   <!-- 添加完成 -->
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/27/%E7%BB%A7%E6%89%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-debounce" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -949,90 +1040,6 @@
 
 
   
-    <article id="post-react-props" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/27/react-props/">react-props</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/27/react-props/" class="archive-article-date">
-  	<time datetime="2016-03-27T13:41:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>React中 state核props主要的区别在于props是不可变的，而state可以根据与用户交互来改变。这就是问什么有些容器组件需要定义state来更新和修改数据。而子组件只能通过state来传递数据。</p>
-        
-      
-     
-      
-      <!-- 添加本文结束标记-->
-  
-    <!-- 添加完成 -->
-     <!-- 开始添加版权声明-->
-     
-   
-     <div class="declare" hidden="hidden"></div>
-   
-   <!-- 添加完成 -->
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/27/react-props/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1134,7 +1141,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,11 +1153,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">chrome</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1155,18 +1174,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">服务端</a>
               </li>
             
             <div class="clearfix"></div>
